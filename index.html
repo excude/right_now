@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시가총액 TOP5</title>
+</head>
+<body>
+<h1>시가총액 TOP5</h1>
+<ul id="list"></ul>
+
+<script>
+fetch("./stocks.json")
+.then(r => r.json())
+.then(data => {
+    let html = "";
+    data.forEach(stock => {
+        html += `<li>${stock.rank}위 ${stock.name} | 현재가 ${stock.price} | 시총 ${stock.market_cap}</li>`;
+    });
+    document.getElementById("list").innerHTML = html;
+});
+</script>
+</body>
+</html>
