@@ -1,24 +1,148 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>시가총액 TOP5</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>종합 자산 요약 현황</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f4f6f8; margin: 0; padding: 20px; color: #333; }
+        h1 { font-size: 18px; margin-top: 25px; margin-bottom: 12px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; }
+        
+        .list-box { list-style: none; padding: 0; margin: 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .list-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px; 
+            border-bottom: 1px solid #eee; 
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .list-item:last-child { border-bottom: none; }
+        
+        /* [규칙] 무조건 첫 줄만 표시되도록 제한 */
+        .item-text {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 15px;
+            font-weight: 500;
+            padding-right: 15px;
+        }
+        /* [규칙] 우측 마크다운 수정 날짜 영역 (YY.MM.DD HH:MM) */
+        .item-date {
+            font-size: 13px;
+            color: #8a8f95;
+            white-space: nowrap;
+        }
+
+        /* 롱프레스 컨텍스트 메뉴 */
+        .context-menu {
+            display: none; position: fixed; background: white; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000;
+            overflow: hidden; width: 130px;
+        }
+        .context-menu div { padding: 12px; font-size: 14px; border-bottom: 1px solid #eee; text-align: center; cursor: pointer; }
+        .context-menu div:last-child { border-bottom: none; }
+        .context-menu div:hover { background: #f5f5f5; }
+    </style>
 </head>
 <body>
-<h1>시가총액 TOP5</h1>
-<ul id="list"></ul>
 
-<script>
-fetch("./stocks.json")
-.then(r => r.json())
-.then(data => {
-    let html = "";
-    data.forEach(stock => {
-        html += `<li>${stock.rank}위 ${stock.name} | 현재가 ${stock.price} | 시총 ${stock.market_cap}</li>`;
-    });
-    document.getElementById("list").innerHTML = html;
-});
-</script>
+    <h1>네이버 금융 시가총액 TOP 5</h1>
+    <ul id="stockList" class="list-box">
+        <li class="list-item"><div class="item-text">데이터 동기화 중...</div></li>
+    </ul>
+
+    <h1>국토교통부 실거래가 (메가트리아 / 센텀퍼스트)</h1>
+    <ul id="realEstateList" class="list-box">
+        <li class="list-item"><div class="item-text">데이터 동기화 중...</div></li>
+    </ul>
+
+    <div id="contextMenu" class="context-menu">
+        <div onclick="alert('상세 정보를 조회합니다.')">상세 보기</div>
+        <div onclick="closeContextMenu()" style="color: #e53935; font-weight: bold;">취소</div>
+    </div>
+
+    <script>
+        const contextMenu = document.getElementById('contextMenu');
+
+        function closeContextMenu() {
+            contextMenu.style.display = 'none';
+        }
+
+        // [규칙] 롱프레스 감지 함수 (600ms 터치/클릭 유지 시 기존 메뉴 바인딩)
+        function applyLongPress(element) {
+            let timer;
+            
+            // 모바일 환경
+            element.addEventListener('touchstart', (e) => {
+                timer = setTimeout(() => openMenu(e.touches[0].clientX, e.touches[0].clientY), 600);
+            });
+            element.addEventListener('touchend', () => clearTimeout(timer));
+            element.addEventListener('touchmove', () => clearTimeout(timer));
+
+            // PC 마우스 환경
+            element.addEventListener('mousedown', (e) => {
+                timer = setTimeout(() => openMenu(e.clientX, e.clientY), 600);
+            });
+            element.addEventListener('mouseup', () => clearTimeout(timer));
+            element.addEventListener('mouseleave', () => clearTimeout(timer));
+        }
+
+        function openMenu(x, y) {
+            contextMenu.style.display = 'block';
+            contextMenu.style.left = x + 'px';
+            contextMenu.style.top = y + 'px';
+        }
+
+        // 외부 클릭 시 메뉴 닫기
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.list-item') && !e.target.closest('#contextMenu')) {
+                closeContextMenu();
+            }
+        });
+
+        // data.json 동적 렌더링
+        fetch("./data.json")
+        .then(res => res.json())
+        .then(data => {
+            const dateStr = data.updated_at; // 파이썬에서 가공된 YY.MM.DD HH:MM
+            
+            // 1. 주식 빌드
+            const stockList = document.getElementById("stockList");
+            stockList.innerHTML = "";
+            data.stocks.forEach(s => {
+                const li = document.createElement("li");
+                li.className = "list-item";
+                li.innerHTML = `
+                    <div class="item-text">${s.rank}위 ${s.name} | 현재가 ${s.price}원 (시총 ${s.market_cap}억)</div>
+                    <div class="item-date">${dateStr}</div>
+                `;
+                applyLongPress(li);
+                stockList.appendChild(li);
+            });
+
+            // 2. 부동산 빌드
+            const reList = document.getElementById("realEstateList");
+            reList.innerHTML = "";
+            data.real_estate.forEach(r => {
+                const li = document.createElement("li");
+                li.className = "list-item";
+                li.innerHTML = `
+                    <div class="item-text">${r.title} → ${r.price}</div>
+                    <div class="item-date">${dateStr}</div>
+                `;
+                applyLongPress(li);
+                reList.appendChild(li);
+            });
+        })
+        .catch(err => {
+            console.error("데이터 로드 실패:", err);
+            document.getElementById("stockList").innerHTML = "<li class='list-item'><div class='item-text'>데이터 로드 오류</div></li>";
+        });
+    </script>
 </body>
 </html>
