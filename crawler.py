@@ -48,11 +48,11 @@ try:
 except Exception as e:
     print(f"주식 크롤링 오류: {e}")
 
-# --- 2. 국토교통부 실거래가 Open API 연동 ---
+# --- 2. 국토교통부 실거래가 Open API 연동 (버그 수정 버전) ---
 api_key = os.environ.get("MOLIT_API_KEY")
 
 if api_key:
-    # 당월 거래가 아직 신고되지 않았을 수 있으므로 이번 달과 지난달을 모두 조회
+    # 이번 달과 지난달 데이터 모두 조회
     months = [now.strftime("%Y%m")]
     first_of_this_month = now.replace(day=1)
     prev_month = first_of_this_month - timedelta(days=1)
@@ -60,24 +60,32 @@ if api_key:
 
     def fetch_apartment_deals(lawd_cd, apt_keyword):
         deals = []
-        url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev"
+        base_url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev"
         
         for ym in months:
+            # 🔥 핵심 해결책: requests의 인코딩 버그를 피하기 위해 인코딩된 인증키를 URL 뒤에 강제로 직접 결합합니다.
+            url = f"{base_url}?serviceKey={api_key}"
             params = {
-                "serviceKey": requests.utils.unquote(api_key),
                 "pageNo": "1",
                 "numOfRows": "100",
                 "LAWD_CD": lawd_cd,
                 "DEAL_YMD": ym
             }
             try:
-                response = requests.get(url, params=params, timeout=10)
+                response = requests.get(url, params=params, timeout=15)
                 if response.status_code == 200:
                     root = ET.fromstring(response.content)
-                    if root.find(".//resultCode").text == "00":
+                    
+                    result_code_el = root.find(".//resultCode")
+                    if result_code_el is not None and result_code_el.text == "00":
                         for item in root.findall(".//item"):
                             apt_name = item.find("아파트").text if item.find("아파트") is not None else ""
-                            if apt_keyword in apt_name:
+                            
+                            # 🔥 띄어쓰기 버그 방지: 검색어와 아파트 이름의 모든 공백을 제거하고 비교합니다.
+                            target_keyword = apt_keyword.replace(" ", "")
+                            target_apt_name = apt_name.replace(" ", "")
+                            
+                            if target_keyword in target_apt_name:
                                 price = item.find("거래금액").text.strip()
                                 area = item.find("전용면적").text.strip()
                                 floor = item.find("층").text if item.find("층") is not None else "-"
@@ -85,39 +93,61 @@ if api_key:
                                 day = item.find("일").text.strip()
                                 
                                 deals.append({
-                                    "apt_name": apt_name,
+                                    "apt_name": apt_name.strip(),
                                     "price": price,
                                     "area": str(round(float(area), 1)),
                                     "floor": floor,
                                     "date": f"{month}/{day}"
                                 })
+                    else:
+                        # API 인증 실패나 제한 걸렸을 때 원인을 파악하기 위해 에러 메시지 추출
+                        msg = root.find(".//resultMsg").text if root.find(".//resultMsg") is not None else "인증 에러가 의심됩니다."
+                        code = result_code_el.text if result_code_el is not None else "Error"
+                        return [{"error_msg": f"공공데이터 API 에러 ({code}): {msg}"}]
             except Exception as e:
-                print(f"{apt_keyword} API 조회 중 오류 발생 ({ym}): {e}")
+                return [{"error_msg": f"접속 실패: {str(e)}"}]
         return deals
 
-    # 만안구(41171) - 메가트리아 / 동안구(41173) - 센텀퍼스트 각각 최신 데이터 수집
-    megatria_list = fetch_apartment_deals("41171", "래미안안양메가트리아")
-    centum_list = fetch_apartment_deals("41173", "평촌센텀퍼스트") or fetch_apartment_deals("41173", "센텀퍼스트")
+    # 검색어를 단지명 핵심 키워드로 압축하여 매칭 확률 극대화
+    megatria_list = fetch_apartment_deals("41171", "메가트리아")
+    centum_list = fetch_apartment_deals("41173", "센텀퍼스트")
 
-    # 각 아파트별 가장 최근 실거래 2건씩만 등록
-    for d in megatria_list[:2]:
-        data_result["real_estate"].append({
-            "title": f"{d['apt_name']} ({d['area']}㎡) {d['floor']}층 | {d['date']} 계약",
-            "price": f"{d['price']}만원"
-        })
-    for d in centum_list[:2]:
-        data_result["real_estate"].append({
-            "title": f"{d['apt_name']} ({d['area']}㎡) {d['floor']}층 | {d['date']} 계약",
-            "price": f"{d['price']}만원"
-        })
+    # 에러가 발생했는지 검사
+    all_responses = megatria_list + centum_list
+    api_errors = [d["error_msg"] for d in all_responses if isinstance(d, dict) and "error_msg" in d]
 
-    if not data_result["real_estate"]:
-        data_result["real_estate"].append({"title": "최근 2개월 내 신고된 실거래가가 없습니다.", "price": "-"})
+    if api_errors:
+        # 에러가 있다면 화면 리스트에 에러 메시지를 노출시켜 사용자가 원인을 볼 수 있게 함
+        data_result["real_estate"].append({
+            "title": f"⚠️ {api_errors[0]}",
+            "price": "확인 요망"
+        })
+    else:
+        # 정상 데이터 바인딩 (각 아파트별 최신 거래 최대 3건씩 표시)
+        for d in megatria_list[:3]:
+            data_result["real_estate"].append({
+                "title": f"{d['apt_name']} ({d['area']}㎡) {d['floor']}층 | {d['date']}",
+                "price": f"{d['price']}만원"
+            })
+        for d in centum_list[:3]:
+            data_result["real_estate"].append({
+                "title": f"{d['apt_name']} ({d['area']}㎡) {d['floor']}층 | {d['date']}",
+                "price": f"{d['price']}만원"
+            })
+
+        if not data_result["real_estate"]:
+            data_result["real_estate"].append({
+                "title": "최근 2개월 내 신고된 실거래 내역이 존재하지 않습니다.",
+                "price": "-"
+            })
 else:
-    data_result["real_estate"].append({"title": "GitHub Secrets에 MOLIT_API_KEY가 없습니다.", "price": "-"})
+    data_result["real_estate"].append({
+        "title": "GitHub Secrets에 MOLIT_API_KEY가 설정되지 않았습니다.",
+        "price": "-"
+    })
 
 # --- 3. 통합 JSON 파일 저장 ---
 with open("data.json", "w", encoding="utf-8") as f:
     json.dump(data_result, f, ensure_ascii=False, indent=2)
 
-print("data.json 데이터 갱신 완료")
+print("data.json 갱신 완료")
