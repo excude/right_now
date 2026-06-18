@@ -2,31 +2,31 @@
   {
     "rank": 1,
     "name": "삼성전자",
-    "price": "349,500",
-    "market_cap": "20,432,744"
+    "price": "362,500",
+    "market_cap": "21,192,760"
   },
   {
     "rank": 2,
     "name": "SK하이닉스",
-    "price": "2,623,000",
-    "market_cap": "18,694,183"
+    "price": "2,685,000",
+    "market_cap": "19,136,058"
   },
   {
     "rank": 3,
     "name": "SK스퀘어",
-    "price": "1,647,000",
-    "market_cap": "2,173,355"
+    "price": "1,700,000",
+    "market_cap": "2,243,293"
   },
   {
     "rank": 4,
     "name": "삼성전기",
-    "price": "2,241,000",
-    "market_cap": "1,673,886"
+    "price": "2,200,000",
+    "market_cap": "1,643,261"
   },
   {
     "rank": 5,
     "name": "현대차",
-    "price": "605,000",
-    "market_cap": "1,238,784"
+    "price": "601,000",
+    "market_cap": "1,230,594"
   }
 ]
