@@ -1,5 +1,5 @@
 {
-  "updated_at": "26.06.18 21:40",
+  "updated_at": "26.06.18 21:48",
   "stocks": [
     {
       "rank": 1,
@@ -34,8 +34,8 @@
   ],
   "real_estate": [
     {
-      "title": "최근 2개월 내 신고된 실거래가가 없습니다.",
-      "price": "-"
+      "title": "⚠️ 접속 실패: HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202606 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\"))",
+      "price": "확인 요망"
     }
   ]
 }
