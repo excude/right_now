@@ -1,40 +1,40 @@
 {
-  "updated_at": "26.06.23 09:09",
+  "updated_at": "26.06.23 14:03",
   "stocks": [
     {
       "rank": 1,
-      "name": "SK하이닉스",
-      "price": "2,928,000",
-      "market_cap": "20,867,925"
+      "name": "삼성전자",
+      "price": "329,500",
+      "market_cap": "19,263,488"
     },
     {
       "rank": 2,
-      "name": "삼성전자",
-      "price": "351,000",
-      "market_cap": "20,520,438"
+      "name": "SK하이닉스",
+      "price": "2,645,000",
+      "market_cap": "18,850,978"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "2,127,000",
-      "market_cap": "2,806,755"
+      "price": "1,948,000",
+      "market_cap": "2,570,549"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "2,137,000",
-      "market_cap": "1,596,204"
+      "price": "2,032,000",
+      "market_cap": "1,517,776"
     },
     {
       "rank": 5,
       "name": "현대차",
-      "price": "566,000",
-      "market_cap": "1,158,929"
+      "price": "521,000",
+      "market_cap": "1,066,788"
     }
   ],
   "real_estate": [
     {
-      "title": "⚠️ 202606 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202606 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\")))",
+      "title": "⚠️ 202606 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202606 (Caused by NewConnectionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to establish a new connection: [Errno 111] Connection refused\")))",
       "price": "확인 요망"
     }
   ]
