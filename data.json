@@ -1,35 +1,35 @@
 {
-  "updated_at": "26.06.23 14:03",
+  "updated_at": "26.06.23 18:45",
   "stocks": [
     {
       "rank": 1,
-      "name": "삼성전자",
-      "price": "329,500",
-      "market_cap": "19,263,488"
+      "name": "SK하이닉스",
+      "price": "2,555,000",
+      "market_cap": "18,209,545"
     },
     {
       "rank": 2,
-      "name": "SK하이닉스",
-      "price": "2,645,000",
-      "market_cap": "18,850,978"
+      "name": "삼성전자",
+      "price": "310,000",
+      "market_cap": "18,123,464"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "1,948,000",
-      "market_cap": "2,570,549"
+      "price": "1,832,000",
+      "market_cap": "2,417,478"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "2,032,000",
-      "market_cap": "1,517,776"
+      "price": "1,990,000",
+      "market_cap": "1,486,405"
     },
     {
       "rank": 5,
       "name": "현대차",
-      "price": "521,000",
-      "market_cap": "1,066,788"
+      "price": "511,000",
+      "market_cap": "1,046,312"
     }
   ],
   "real_estate": [
