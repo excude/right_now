@@ -1,29 +1,29 @@
 {
-  "updated_at": "26.06.30 07:09",
+  "updated_at": "26.06.30 09:06",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "323,000",
-      "market_cap": "18,883,480"
+      "price": "333,500",
+      "market_cap": "19,497,339"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "2,628,000",
-      "market_cap": "18,729,818"
+      "price": "2,666,000",
+      "market_cap": "19,000,645"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "1,640,000",
-      "market_cap": "2,164,118"
+      "price": "1,651,000",
+      "market_cap": "2,178,633"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "2,038,000",
-      "market_cap": "1,522,258"
+      "price": "2,135,000",
+      "market_cap": "1,594,710"
     },
     {
       "rank": 5,
@@ -34,7 +34,7 @@
   ],
   "real_estate": [
     {
-      "title": "⚠️ 202606 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202606 (Caused by NewConnectionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to establish a new connection: [Errno 111] Connection refused\")))",
+      "title": "⚠️ 202606 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202606 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\")))",
       "price": "확인 요망"
     }
   ]
