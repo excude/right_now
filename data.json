@@ -1,40 +1,40 @@
 {
-  "updated_at": "26.07.16 09:00",
+  "updated_at": "26.07.16 13:09",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "279,500",
-      "market_cap": "16,340,349"
+      "price": "257,250",
+      "market_cap": "15,039,552"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "2,082,000",
-      "market_cap": "14,838,463"
+      "price": "1,845,000",
+      "market_cap": "13,149,359"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "1,382,000",
-      "market_cap": "1,823,665"
+      "price": "1,238,000",
+      "market_cap": "1,633,645"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "1,413,000",
-      "market_cap": "1,055,422"
+      "price": "1,299,000",
+      "market_cap": "970,271"
     },
     {
       "rank": 5,
       "name": "현대차",
-      "price": "434,000",
-      "market_cap": "888,649"
+      "price": "419,000",
+      "market_cap": "857,935"
     }
   ],
   "real_estate": [
     {
-      "title": "⚠️ 202607 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202607 (Caused by NewConnectionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to establish a new connection: [Errno 111] Connection refused\")))",
+      "title": "⚠️ 202607 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202607 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\")))",
       "price": "확인 요망"
     }
   ]
