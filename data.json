@@ -1,29 +1,29 @@
 {
-  "updated_at": "26.07.21 15:30",
+  "updated_at": "26.07.21 18:28",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "260,000",
-      "market_cap": "15,200,324"
+      "price": "259,000",
+      "market_cap": "15,141,862"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "1,847,000",
-      "market_cap": "13,163,613"
+      "price": "1,836,000",
+      "market_cap": "13,085,215"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "1,251,000",
-      "market_cap": "1,650,799"
+      "price": "1,253,000",
+      "market_cap": "1,653,439"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "1,315,000",
-      "market_cap": "982,222"
+      "price": "1,310,000",
+      "market_cap": "978,487"
     },
     {
       "rank": 5,
