@@ -1,40 +1,40 @@
 {
-  "updated_at": "26.07.30 09:01",
+  "updated_at": "26.07.30 13:06",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "216,500",
-      "market_cap": "12,657,193"
+      "price": "210,250",
+      "market_cap": "12,291,801"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "1,384,000",
-      "market_cap": "10,110,014"
+      "price": "1,340,000",
+      "market_cap": "9,788,598"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "835,000",
-      "market_cap": "1,101,853"
+      "price": "785,000",
+      "market_cap": "1,035,873"
     },
     {
       "rank": 4,
-      "name": "삼성전기",
-      "price": "1,030,000",
-      "market_cap": "769,345"
+      "name": "LG에너지솔루션",
+      "price": "317,000",
+      "market_cap": "741,780"
     },
     {
       "rank": 5,
       "name": "현대차",
-      "price": "354,000",
-      "market_cap": "724,842"
+      "price": "348,000",
+      "market_cap": "712,557"
     }
   ],
   "real_estate": [
     {
-      "title": "⚠️ 202607 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202607 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\")))",
+      "title": "⚠️ 202607 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202607 (Caused by NewConnectionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to establish a new connection: [Errno 111] Connection refused\")))",
       "price": "확인 요망"
     }
   ]
