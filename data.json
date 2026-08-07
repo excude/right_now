@@ -1,17 +1,17 @@
 {
-  "updated_at": "26.08.07 14:41",
+  "updated_at": "26.08.07 16:19",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "232,500",
-      "market_cap": "13,592,598"
+      "price": "231,000",
+      "market_cap": "13,504,904"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "1,421,000",
-      "market_cap": "10,380,296"
+      "price": "1,422,000",
+      "market_cap": "10,387,601"
     },
     {
       "rank": 3,
@@ -22,14 +22,14 @@
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "1,289,000",
-      "market_cap": "962,802"
+      "price": "1,278,000",
+      "market_cap": "954,585"
     },
     {
       "rank": 5,
       "name": "LG에너지솔루션",
-      "price": "357,000",
-      "market_cap": "835,380"
+      "price": "360,000",
+      "market_cap": "842,400"
     }
   ],
   "real_estate": [
