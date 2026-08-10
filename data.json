@@ -1,35 +1,35 @@
 {
-  "updated_at": "26.08.10 10:58",
+  "updated_at": "26.08.10 13:03",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "232,000",
-      "market_cap": "13,563,366"
+      "price": "231,500",
+      "market_cap": "13,534,135"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "1,449,000",
-      "market_cap": "10,584,834"
+      "price": "1,439,000",
+      "market_cap": "10,511,785"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "941,000",
-      "market_cap": "1,241,728"
+      "price": "950,000",
+      "market_cap": "1,253,605"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "1,278,000",
-      "market_cap": "954,585"
+      "price": "1,277,000",
+      "market_cap": "953,838"
     },
     {
       "rank": 5,
       "name": "LG에너지솔루션",
-      "price": "360,000",
-      "market_cap": "842,400"
+      "price": "360,500",
+      "market_cap": "843,570"
     }
   ],
   "real_estate": [
