@@ -1,40 +1,40 @@
 {
-  "updated_at": "26.08.13 08:43",
+  "updated_at": "26.08.13 11:08",
   "stocks": [
     {
       "rank": 1,
       "name": "삼성전자",
-      "price": "255,500",
-      "market_cap": "14,937,242"
+      "price": "268,750",
+      "market_cap": "15,711,874"
     },
     {
       "rank": 2,
       "name": "SK하이닉스",
-      "price": "1,504,000",
-      "market_cap": "10,986,605"
+      "price": "1,613,000",
+      "market_cap": "11,782,842"
     },
     {
       "rank": 3,
       "name": "SK스퀘어",
-      "price": "1,024,000",
-      "market_cap": "1,351,254"
+      "price": "1,116,000",
+      "market_cap": "1,472,656"
     },
     {
       "rank": 4,
       "name": "삼성전기",
-      "price": "1,335,000",
-      "market_cap": "997,161"
+      "price": "1,504,000",
+      "market_cap": "1,123,393"
     },
     {
       "rank": 5,
-      "name": "LG에너지솔루션",
-      "price": "358,500",
-      "market_cap": "838,890"
+      "name": "현대차",
+      "price": "421,500",
+      "market_cap": "863,054"
     }
   ],
   "real_estate": [
     {
-      "title": "⚠️ 202608 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202608 (Caused by NameResolutionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to resolve 'openapi.molit.go.kr' ([Errno -3] Temporary failure in name resolution)\")))",
+      "title": "⚠️ 202608 조회 실패 -> 접속 실패 (HTTPConnectionPool(host='openapi.molit.go.kr', port=80): Max retries exceeded with url: /OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey=6ea3aae9caf357c9ec7a474394830ae3e3ee8f0e3e15c21e41102bb7c28ce7a5&pageNo=1&numOfRows=100&LAWD_CD=41171&DEAL_YMD=202608 (Caused by NewConnectionError(\"HTTPConnection(host='openapi.molit.go.kr', port=80): Failed to establish a new connection: [Errno 111] Connection refused\")))",
       "price": "확인 요망"
     }
   ]
